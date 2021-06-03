@@ -46,11 +46,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-        $resArr = [];
-        $resArr['token'] = $user->createToken('api-application')->accessToken;
-        $resArr['name'] = $user->name;
-        Auth::login($user);
-
+        
         return redirect(RouteServiceProvider::HOME);
     }
 }

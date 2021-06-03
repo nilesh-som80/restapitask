@@ -52,5 +52,8 @@
                 </x-button>
             </div>
         </form>
+        <script>
+            sessionStorage.clear();
+        </script>
     </x-auth-card>
 </x-guest-layout>

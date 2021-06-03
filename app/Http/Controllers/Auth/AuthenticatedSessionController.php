@@ -32,12 +32,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $user = Auth::user();
-            $resArr = [];
-        $resArr['token'] = $user->createToken('api-application')->accessToken;
-        $resArr['name'] = $user->name;
-        $OTP = bin2hex(random_bytes(6));
-        dd($OTP);
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -49,9 +43,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $token = $request->user()->token();
-        $token->revoke();
-        
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
